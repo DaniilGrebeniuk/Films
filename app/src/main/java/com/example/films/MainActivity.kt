@@ -5,31 +5,45 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import com.example.films.databinding.ActivityMainBinding
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.MaterialToolbar
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val setOnListenerB1 = findViewById<Button>(R.id.button_1)
-        val setOnListenerB2 = findViewById<Button>(R.id.button_2)
-        val setOnListenerB3 = findViewById<Button>(R.id.button_3)
-        val setOnListenerB4 = findViewById<Button>(R.id.button_4)
-        val setOnListenerB5 = findViewById<Button>(R.id.button_5)
-        setOnListenerB1.setOnClickListener {
-            Toast.makeText(this, R.string.button_1, Toast.LENGTH_SHORT).show()
-        }
-        setOnListenerB2.setOnClickListener {
-            Toast.makeText(this, R.string.button_2, Toast.LENGTH_SHORT).show()
-        }
-        setOnListenerB3.setOnClickListener {
-            Toast.makeText(this, R.string.button_3, Toast.LENGTH_SHORT).show()
-        }
-        setOnListenerB4.setOnClickListener {
-            Toast.makeText(this, R.string.button_4, Toast.LENGTH_SHORT).show()
-        }
-        setOnListenerB5.setOnClickListener {
-            Toast.makeText(this, R.string.button_5, Toast.LENGTH_SHORT).show()
-        }
+        binding = ActivityMainBinding.inflate(layoutInflater) //initializing the binding class
+        setContentView(binding.root)
 
+        binding.topAppbar.setOnMenuItemClickListener() {
+            when (it.itemId) {
+                R.id.settings -> {
+                    Toast.makeText(this, R.string.Settings, Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
+        binding.navigationBar.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.favorites -> {
+                    Toast.makeText(this, R.string.Favorites, Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.view_later -> {
+                    Toast.makeText(this, R.string.ViewLater, Toast.LENGTH_SHORT).show()
+                    true
+
+                }
+                R.id.stands -> {
+                    Toast.makeText(this, R.string.Stands, Toast.LENGTH_SHORT).show()
+                    true
+
+                }
+                else -> false
+            }
+        }
     }
 }
