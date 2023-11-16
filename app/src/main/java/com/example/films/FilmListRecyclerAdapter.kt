@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
@@ -23,12 +24,13 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
         when (holder) {
             is FilmViewHolder -> {
                 holder.bind(items[position])
-                holder.itemView.findViewById<CardView>(R.id.item_container).setOnClickListener {
+                holder.itemView.findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.item_cont).setOnClickListener {
                     clickListener.click(items[position])
                 }
             }
         }
     }
+
 
     @SuppressLint("NotifyDataSetChanged")
     fun addItems(list: List<Film>) {
