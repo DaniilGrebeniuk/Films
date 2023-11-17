@@ -1,8 +1,7 @@
 package com.example.films
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 
-@Suppress("DEPRECATED_ANNOTATION")
+import kotlinx.parcelize.Parcelize
 @Parcelize
  data class Film(
     val title: String,
