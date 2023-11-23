@@ -3,6 +3,8 @@ package com.example.films
 
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Slide
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,10 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DetailsFragment : Fragment() {
+    init {
+        enterTransition = Slide(Gravity.TOP).apply { duration = 600; }
+        returnTransition = Slide(Gravity.TOP).apply { duration = 600;mode = Slide.MODE_OUT }
+    }
     private lateinit var film: Film
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

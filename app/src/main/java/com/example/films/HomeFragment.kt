@@ -3,21 +3,27 @@ package com.example.films
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.transition.Scene
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.transition.TransitionSet
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
-import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.view.menu.MenuView.ItemView
-import androidx.core.widget.NestedScrollView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.films.databinding.ActivityMainBinding
 import java.util.*
-
 class HomeFragment : Fragment() {
+
+    init {
+        exitTransition = Slide(Gravity.BOTTOM).apply { duration = 600;mode = Slide.MODE_OUT }
+        reenterTransition = Slide(Gravity.BOTTOM).apply { duration = 600; }
+    }
 
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
     private val filmDataBase = listOf(
@@ -59,18 +65,44 @@ class HomeFragment : Fragment() {
     )
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        view?.findViewById<RecyclerView>(R.id.main_recycler)?.setOnClickListener {
+            val a = activity as FragmentActivity
+            a.supportFragmentManager.beginTransaction().replace(R.id.main_recycler,DetailsFragment()).addToBackStack(null).commit()
+        }
+    }
     @SuppressLint("CutPasteId")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
+        val scene = Scene.getSceneForLayout(
+            view.findViewById<ConstraintLayout>(R.id.home_fragment_root),
+            R.layout.merge_home_screen_content,
+            requireContext()
+        )
+        val searSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
+        val recycleSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
+        val customTransient = TransitionSet().apply {
+            duration = 500
+            addTransition(recycleSlide)
+            addTransition(searSlide)
+        }
+        TransitionManager.go(scene, customTransient)
+
+
+
         view.findViewById<androidx.appcompat.widget.SearchView>(R.id.search_view)
             .setOnClickListener {
                 view.findViewById<androidx.appcompat.widget.SearchView>(R.id.search_view).isIconified =
@@ -91,8 +123,8 @@ class HomeFragment : Fragment() {
                         }
                     }
                     val result = filmDataBase.filter {
-                        it.title.toLowerCase(Locale.getDefault())
-                            .contains(newText!!.toLowerCase(Locale.getDefault()))
+                        it.title.lowercase(Locale.getDefault())
+                            .contains(newText!!.lowercase(Locale.getDefault()))
                     }
                     filmsAdapter.addItems(result)
                     return true
@@ -104,6 +136,7 @@ class HomeFragment : Fragment() {
                 if (scrollY > oldScrollY) {
                     view.findViewById<androidx.appcompat.widget.SearchView>(R.id.search_view).visibility =
                         View.GONE
+
                 } else {
                     view.findViewById<androidx.appcompat.widget.SearchView>(R.id.search_view).visibility =
                         View.VISIBLE
@@ -124,9 +157,12 @@ class HomeFragment : Fragment() {
             //Применяем декоратор для отступов
             val decorator = TopSpacingItemDecoration(8)
             addItemDecoration(decorator)
+
         }
         //Кладем нашу БД в RV
         filmsAdapter.addItems(filmDataBase)
+
+
     }
 
 

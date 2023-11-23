@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:elevation="1dp"
-
+android:id="@+id/root"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 android:id="@+id/item_cont"        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/still_bakground">
+        android:background="@drawable/still_bakground"
+        >
 
         <ImageView
             android:id="@+id/poster"
@@ -33,7 +34,8 @@ android:id="@+id/item_cont"        android:layout_width="match_parent"
             app:layout_constraintLeft_toRightOf="@+id/poster"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Title" />
+            tools:text="Title"
+           />
 
         <TextView
             android:id="@+id/description"

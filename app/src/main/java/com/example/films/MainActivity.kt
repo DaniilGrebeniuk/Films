@@ -3,10 +3,8 @@ package com.example.films
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextThemeWrapper
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.films.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -19,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_placeholder, HomeFragment())
+            .replace(R.id.fragment_placeholder, HomeFragment())
             .addToBackStack(null)
             .commit()
 
@@ -42,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    @Suppress("DEPRECATION")
     private fun initNavigation() {
         findViewById<BottomNavigationView>(R.id.navigation_bar).setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -68,6 +67,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
+    @Suppress("DEPRECATION")
     override fun onBackPressed() {
        if (supportFragmentManager.backStackEntryCount==1){
         AlertDialog.Builder(ContextThemeWrapper(this,R.style.MyDialog))
