@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<item
-android:id="@+id/favorites"
-    android:icon="@drawable/baseline_favorite"
-    app:showAsAction="ifRoom"
-    android:title="@string/Favorites"/>
-<item
-android:id="@+id/view_later"
-    android:icon="@drawable/baseline_watch_later"
-    app:showAsAction="ifRoom"
-    android:title="@string/ViewLater"/><item
-android:id="@+id/stands"
-    android:icon="@drawable/baseline_video_library"
-    app:showAsAction="ifRoom"
-    android:title="@string/Stands"/>
+    <item
+        android:id="@+id/home1"
+        android:icon="@drawable/baseline_home"
+        android:title="@string/Home"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/favorites"
+        android:icon="@drawable/baseline_favorite"
+        android:title="@string/Favorites"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/view_later"
+        android:icon="@drawable/baseline_watch_later"
+        android:title="@string/ViewLater"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/stands"
+        android:icon="@drawable/baseline_video_library"
+        android:title="@string/Stands"
+        app:showAsAction="ifRoom" />
 
 </menu>

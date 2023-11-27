@@ -21,8 +21,10 @@ import java.util.*
 class HomeFragment : Fragment() {
 
     init {
-        exitTransition = Slide(Gravity.BOTTOM).apply { duration = 600;mode = Slide.MODE_OUT }
+        exitTransition = Slide(Gravity.BOTTOM).apply { duration = 400;mode = Slide.MODE_OUT }
         reenterTransition = Slide(Gravity.BOTTOM).apply { duration = 600; }
+
+
     }
 
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
@@ -68,7 +70,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.merge_home_screen_content, container, false)
 
     }
 
@@ -85,9 +87,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        AnimationHelper.performFragmentCircularRevealAnimation(view.findViewById<ConstraintLayout>(R.id.home_fragment_root), requireActivity(), 1)
 
 
-        val scene = Scene.getSceneForLayout(
+      /*  val scene = Scene.getSceneForLayout(
             view.findViewById<ConstraintLayout>(R.id.home_fragment_root),
             R.layout.merge_home_screen_content,
             requireContext()
@@ -100,7 +103,7 @@ class HomeFragment : Fragment() {
             addTransition(searSlide)
         }
         TransitionManager.go(scene, customTransient)
-
+*/
 
 
         view.findViewById<androidx.appcompat.widget.SearchView>(R.id.search_view)

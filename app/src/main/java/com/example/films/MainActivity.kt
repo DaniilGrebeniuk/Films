@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.ContextThemeWrapper
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -44,21 +45,34 @@ class MainActivity : AppCompatActivity() {
     private fun initNavigation() {
         findViewById<BottomNavigationView>(R.id.navigation_bar).setOnNavigationItemSelectedListener {
             when (it.itemId) {
+                R.id.home1 -> {
+                    supportFragmentManager
+                    val tag = "home1"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment(fragment ?: HomeFragment(), tag)
+                    true
+                }
+
                 R.id.favorites -> {
                     supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_placeholder, FavoritesFragment())
-                        .addToBackStack(null)
-                        .commit()
+                    val tag = "favorites"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment(fragment ?: FavoritesFragment(), tag)
                     true
                 }
                 R.id.view_later -> {
-                    Toast.makeText(this, R.string.ViewLater, Toast.LENGTH_SHORT).show()
+                    val tag = "view_later"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment(fragment ?: WatchLaterFragment(), tag)
+
                     true
 
                 }
                 R.id.stands -> {
-                    Toast.makeText(this, R.string.Stands, Toast.LENGTH_SHORT).show()
+                    val tag = "stands"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment(fragment ?: SelectionsFragment(), tag)
+
                     true
 
                 }
@@ -70,27 +84,34 @@ class MainActivity : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     @Suppress("DEPRECATION")
     override fun onBackPressed() {
-       if (supportFragmentManager.backStackEntryCount==1){
-        AlertDialog.Builder(ContextThemeWrapper(this,R.style.MyDialog))
-            .setTitle("Вы хотите выйти?")
-            .setIcon(R.drawable.baseline_exit_to_app_24)
-            .setPositiveButton("Да") { _, _ ->
-                finish()
-            }
-            .setNegativeButton("Нет") { _, _ ->
+        if (supportFragmentManager.backStackEntryCount == 1) {
+            AlertDialog.Builder(ContextThemeWrapper(this, R.style.MyDialog))
+                .setTitle("Вы хотите выйти?")
+                .setIcon(R.drawable.baseline_exit_to_app_24)
+                .setPositiveButton("Да") { _, _ ->
+                    finish()
+                }
+                .setNegativeButton("Нет") { _, _ ->
 
 
-            }
-            .setNeutralButton("Не знаю") { _, _ ->
-                Toast.makeText(this, "Решайся", Toast.LENGTH_SHORT).show()
-            }
-            .show()
-       }else {
-           super.onBackPressed()
-       }
+                }
+                .setNeutralButton("Не знаю") { _, _ ->
+                    Toast.makeText(this, "Решайся", Toast.LENGTH_SHORT).show()
+                }
+                .show()
+        } else {
+            super.onBackPressed()
+        }
     }
 
+    private fun checkFragmentExistence(tag: String): Fragment? =
+        supportFragmentManager.findFragmentByTag(tag)
 
-
-
+    private fun changeFragment(fragment: Fragment, tag: String) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_placeholder, fragment, tag)
+            .addToBackStack(null)
+            .commit()
+    }
 }

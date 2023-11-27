@@ -15,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DetailsFragment : Fragment() {
     init {
+
         enterTransition = Slide(Gravity.TOP).apply { duration = 600; }
         returnTransition = Slide(Gravity.TOP).apply { duration = 600;mode = Slide.MODE_OUT }
     }

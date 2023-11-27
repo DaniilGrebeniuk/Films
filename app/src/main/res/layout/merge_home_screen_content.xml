@@ -2,9 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/merge_home_screen_content"
+    android:id="@+id/home_fragment_root"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".HomeFragment"
+android:visibility="invisible"
+    tools:visibility="visible"
+    android:background="@drawable/home_becgraund">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
@@ -12,8 +16,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@drawable/stil_search"
-        android:fitsSystemWindows="true" />
+        android:background="@drawable/still_bakground_search"
+        android:fitsSystemWindows="true" >
+
+
+    </androidx.appcompat.widget.SearchView>
 
 
 

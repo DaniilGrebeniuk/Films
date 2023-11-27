@@ -21,10 +21,13 @@ class FavoritesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_favorites, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        AnimationHelper.performFragmentCircularRevealAnimation(requireView(), requireActivity(), 2)
+
         val favoritesList: List<Film> = emptyList()
         view.findViewById<RecyclerView>(R.id.favorites_recycler).apply {
             filmsAdapter =

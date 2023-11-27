@@ -2,11 +2,12 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root"
     android:fitsSystemWindows="true"
-    tools:context=".DetailsFragment">
+    tools:context=".DetailsFragment"
+    android:background="@drawable/home_becgraund">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -38,8 +39,8 @@
                 android:id="@+id/details_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
                 android:transitionName="image_name"
+                app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -52,35 +53,35 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:backgroundTint="@color/green"
-        app:tint="@color/white"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|right"
-        app:srcCompat="@drawable/baseline_share" />
+        app:srcCompat="@drawable/baseline_share"
+        app:tint="@color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/favarite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-app:tint="@color/white"
         app:backgroundTint="@color/green"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|left"
-        app:srcCompat="@drawable/baseline_favorite" />
-<com.google.android.material.floatingactionbutton.FloatingActionButton
+        app:tint="@color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/watch_later"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="80dp"
-    app:tint="@color/white"
-
-
         app:backgroundTint="@color/green"
+
+
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom"
-
         app:srcCompat="@drawable/baseline_watch_later"
-    tools:ignore="ContentDescription" />
+
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -88,12 +89,24 @@ app:tint="@color/white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/details_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp" />
+            android:layout_margin="30dp" />
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_ani"
+
+        android:layout_width="50dp"
+        android:layout_height="37dp"
+        app:layout_anchor="@+id/favarite"
+        app:layout_anchorGravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/hearts" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
