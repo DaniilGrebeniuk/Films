@@ -1,5 +1,6 @@
 package com.example.films
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextThemeWrapper
@@ -11,14 +12,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         initNavigation()
 
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_placeholder, HomeFragment())
+
             .addToBackStack(null)
             .commit()
 

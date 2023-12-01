@@ -60,6 +60,8 @@ class DetailsFragment : Fragment() {
         view?.findViewById<FloatingActionButton>(R.id.favorites)?.setOnClickListener{
             if (!film.isInFavorites) {
                 view?.findViewById<FloatingActionButton>(R.id.favorites)?.setImageResource(R.drawable.baseline_favorite_no)
+
+
             film.isInFavorites = true
             }else {
                 view?.findViewById<FloatingActionButton>(R.id.favorites)?.setImageResource(R.drawable.baseline_favorite)

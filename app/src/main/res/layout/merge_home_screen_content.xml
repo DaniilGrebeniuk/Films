@@ -32,6 +32,8 @@ android:visibility="invisible"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_view"
         tools:listitem="@layout/film_item"
+        android:layoutAnimation="@anim/layaut_anim_item"
+
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="8dp" />
