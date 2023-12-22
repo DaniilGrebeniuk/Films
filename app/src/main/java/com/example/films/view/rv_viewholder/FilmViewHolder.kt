@@ -1,20 +1,16 @@
-package com.example.films
+package com.example.films.view.rv_viewholder
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.view.View
-import android.view.ViewAnimationUtils
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.graphics.alpha
-import androidx.core.view.ViewCompat
-import androidx.core.view.ViewCompat.animate
 import androidx.recyclerview.widget.RecyclerView
+import com.example.films.R
+import com.example.films.domain.Film
+import com.example.films.view.costomview.RatingDonutView
 
 
 class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
+
     private val title = itemView.findViewById<TextView>(R.id.title)
     private val poster = itemView.findViewById<ImageView>(R.id.poster)
     private val description = itemView.findViewById<TextView>(R.id.description)

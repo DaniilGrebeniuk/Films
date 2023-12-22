@@ -1,4 +1,4 @@
-package com.example.films
+package com.example.films.utils
 
 import android.app.Activity
 import android.view.View

@@ -1,14 +1,24 @@
-package com.example.films
+package com.example.films.view.fragments
 
 import android.os.Bundle
+import android.transition.Fade
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.films.R
+import com.example.films.utils.AnimationHelper
+
 
 class WatchLaterFragment : Fragment() {
 
-    override fun onCreateView(
+    init {
+        exitTransition = Fade()
+        reenterTransition = Fade()
+
+    }
+
+        override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {

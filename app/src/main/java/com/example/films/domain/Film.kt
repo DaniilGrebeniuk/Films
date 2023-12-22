@@ -1,4 +1,4 @@
-package com.example.films
+package com.example.films.domain
 import android.os.Parcelable
 
 import kotlinx.parcelize.Parcelize
@@ -8,5 +8,5 @@ import kotlinx.parcelize.Parcelize
     val poster: Int,
     val description: String,
     val rating : Float = 0f,
-    var isInFavorites : Boolean = false
+    var isInFavorites : Boolean = false,
 ) : Parcelable

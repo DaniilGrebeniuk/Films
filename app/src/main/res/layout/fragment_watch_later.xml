@@ -6,8 +6,7 @@
     android:background="@drawable/watche_later"
     android:visibility="invisible"
 
-    tools:context=".WatchLaterFragment">
-
+    tools:context=".view.fragments.WatchLaterFragment">
 
 
 </FrameLayout>

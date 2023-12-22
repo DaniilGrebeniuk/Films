@@ -1,4 +1,4 @@
-package com.example.films
+package com.example.films.view
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,10 @@ import android.view.ContextThemeWrapper
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.films.R
+import com.example.films.domain.Film
+import com.example.films.view.*
+import com.example.films.view.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 

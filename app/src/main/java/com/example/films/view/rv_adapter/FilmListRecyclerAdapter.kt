@@ -1,12 +1,12 @@
-package com.example.films
+package com.example.films.view.rv_adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.films.view.rv_viewholder.FilmViewHolder
+import com.example.films.R
+import com.example.films.domain.Film
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

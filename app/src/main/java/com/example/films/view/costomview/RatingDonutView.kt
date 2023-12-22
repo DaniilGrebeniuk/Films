@@ -1,10 +1,11 @@
-package com.example.films
+package com.example.films.view.costomview
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.example.films.R
 import kotlin.math.min
 
 class RatingDonutView @JvmOverloads constructor(context: Context, attributeSet: AttributeSet? = null) : View(context, attributeSet) {
