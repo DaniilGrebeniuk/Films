@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Films</string>
-    <string name="button_1">Меню</string>
-    <string name="button_2">Избранное</string>
-    <string name="button_3">Посмотреть позже</string>
-    <string name="button_4">Подборки</string>
-    <string name="button_5">Настройки</string>
+    <string name="Favorites">Избранное</string>
+    <string name="ViewLater">Посмотреть позже</string>
+    <string name="Stands">Подборки</string>
     <string name="disclaimer">Постеры предоставлены www.movieposters.com</string>
+    <string name="Home">Главная</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>
