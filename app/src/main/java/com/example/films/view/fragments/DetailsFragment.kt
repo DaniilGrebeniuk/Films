@@ -8,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.annotation.GlideType
 import com.example.films.R
+import com.example.films.data.Entity.ApiConstants
 import com.example.films.databinding.FragmentDetailsBinding
 import com.example.films.domain.Film
 
@@ -31,16 +34,21 @@ private lateinit var binding: FragmentDetailsBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setFilmsDetails(view)
+        setFilmsDetails()
         sendToFriend()
         onOffFavorites()
     }
 
-    private fun setFilmsDetails(view: View) = with(binding) {
+    private fun setFilmsDetails() {
         film = arguments?.get("film") as Film
-        detailsPoster.setImageResource(film.poster)
-        detailsToolbar.title = film.title
-        detailsDescription.text = film.description
+
+        binding.detailsToolbar.title = film.title
+
+Glide.with(this)
+    .load(ApiConstants.IMAGES_URL + "w780" + film.poster)
+    .centerCrop()
+    .into(binding.detailsPoster)
+        binding.detailsDescription.text = film.description
     }
 
 

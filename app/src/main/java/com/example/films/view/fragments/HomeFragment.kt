@@ -78,7 +78,6 @@ class HomeFragment : Fragment() {
         viewModel.filmListLiveData.observe(viewLifecycleOwner) { filmDataBase = it }
 
 
-
     }
 
     private fun initSearchView() {
