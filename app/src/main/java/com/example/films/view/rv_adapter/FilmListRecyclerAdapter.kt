@@ -33,6 +33,7 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     }
 
 
+
     @SuppressLint("NotifyDataSetChanged")
     fun addItems(list: List<Film>) {
         items.clear()
@@ -43,4 +44,5 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     interface OnItemClickListener {
         fun click(film: Film)
     }
+
 }

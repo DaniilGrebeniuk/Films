@@ -15,6 +15,7 @@ import com.example.films.data.Entity.ApiConstants
 import com.example.films.databinding.FragmentDetailsBinding
 import com.example.films.domain.Film
 
+@Suppress("DEPRECATION")
 class DetailsFragment : Fragment() {
 private lateinit var binding: FragmentDetailsBinding
     private lateinit var film: Film
@@ -34,9 +35,11 @@ private lateinit var binding: FragmentDetailsBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setFilmsDetails()
-        sendToFriend()
         onOffFavorites()
+
+        sendToFriend()
     }
 
     private fun setFilmsDetails() {

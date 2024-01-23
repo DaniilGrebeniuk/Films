@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.films.view.MainActivity
@@ -54,9 +55,7 @@ class FavoritesFragment : Fragment() {
 
         ininFavoritRC()
 
-        viewModel.filmListLiveData.observe(viewLifecycleOwner) { it ->
-            filmDataBase =
-                it.filter { it.isInFavorites } as MutableList<Film>
+        viewModel.filmListLiveData.observe(viewLifecycleOwner) {filmDataBase.filter { it.isInFavorites }
         }
 
 
@@ -74,10 +73,10 @@ class FavoritesFragment : Fragment() {
                 })
             favoritesRecycler.adapter = filmsAdapter
             layoutManager = LinearLayoutManager(requireContext())
-           /* val t = Scroll(favoritesRecycler.adapter as FilmListRecyclerAdapter)
-            val collback = ItemTouchHelper(t)
-            collback.attachToRecyclerView(favoritesRecycler)
-            */
+            /* val t = Scroll(favoritesRecycler.adapter as FilmListRecyclerAdapter)
+             val collback = ItemTouchHelper(t)
+             collback.attachToRecyclerView(favoritesRecycler)
+             */
             val decoration = TopSpacingItemDecoration(8)
             addItemDecoration(decoration)
 

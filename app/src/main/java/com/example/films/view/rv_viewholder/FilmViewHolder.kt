@@ -28,14 +28,14 @@ class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             .into(poster)
 
         description.text = film.description
-        //ratingDonut.alpha = 0.0f
+        ratingDonut.alpha = 0.0f
         ratingDonut.setProgress((film.rating * 10).toInt())
-        /*ratingDonut.animate().apply {
+        ratingDonut.animate().apply {
             duration = 2200
             alpha(1f)
             start()
 
 
-        }*/
+        }
     }
 }

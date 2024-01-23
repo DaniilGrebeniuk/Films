@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id ('kotlin-parcelize')
+    id('kotlin-parcelize')
     id 'kotlin-kapt'
 
 }
@@ -9,7 +9,7 @@ plugins {
 android {
     namespace 'com.example.films'
     compileSdk 33
-    buildFeatures{
+    buildFeatures {
         viewBinding true
         dataBinding true
     }
@@ -35,6 +35,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+
     }
 }
 
@@ -53,6 +54,12 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.6.0"
     implementation "com.squareup.okhttp3:logging-interceptor:3.12.6"
+
+    implementation 'com.google.dagger:dagger-android:2.50'
+    kapt 'com.google.dagger:dagger-compiler:2.50'
+
     implementation 'com.github.bumptech.glide:glide:4.16.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
+
 }

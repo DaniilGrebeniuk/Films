@@ -24,19 +24,25 @@ import java.util.*
 
 
 class HomeFragment : Fragment() {
-
-    private lateinit var filmsAdapter: FilmListRecyclerAdapter
-    private lateinit var binding: MergeHomeScreenContentBinding
     private val viewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
 
     }
-    private var filmDataBase = listOf<Film>()
+
+    private lateinit var filmsAdapter: FilmListRecyclerAdapter
+    private lateinit var binding: MergeHomeScreenContentBinding
+
+    private var filmDataBase = mutableListOf<Film>()
         set(value) {
             if (field == value) return
             field = value
             filmsAdapter.addItems(field)
         }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    retainInstance = true
+    }
 
     init {
         exitTransition = Fade()
@@ -63,6 +69,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+
     @SuppressLint("CutPasteId")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,7 +82,12 @@ class HomeFragment : Fragment() {
         )
         initSearchView()
         initRecycler()
-        viewModel.filmListLiveData.observe(viewLifecycleOwner) { filmDataBase = it }
+
+        viewModel.filmListLiveData.observe(viewLifecycleOwner) { filmDataBase =
+            it as MutableList<Film>
+
+        }
+
 
 
     }

@@ -6,14 +6,21 @@ import com.example.films.App
 import com.example.films.domain.Film
 import com.example.films.domain.Interactor
 
+import javax.inject.Inject
+
 class HomeFragmentViewModel : ViewModel() {
     val filmListLiveData: MutableLiveData<List<Film>> = MutableLiveData()
-    private var interactor: Interactor = App.instance.interactor
-
+@Inject
+    lateinit var interactor : Interactor
     init {
-        interactor.getFilmsFromApi(1, object : ApiCallback {
+
+App.instance.dagger.inject(this)
+        interactor.getFilmsFromApi(page = 1, object : ApiCallback {
+
             override fun onSuccess(films: List<Film>) {
                 filmListLiveData.postValue(films)
+
+
             }
 
             override fun onFailure() {
@@ -21,7 +28,10 @@ class HomeFragmentViewModel : ViewModel() {
             }
         }
         )
+
+
     }
+
 
     interface ApiCallback {
         fun onSuccess(films: List<Film>)

@@ -12,6 +12,7 @@ import retrofit2.Response
 
 class Interactor(private val repo: MainRepository, private val retrofitService: TmdbApi) {
     fun getFilmsFromApi(page: Int, callback: HomeFragmentViewModel.ApiCallback) {
+
         retrofitService.getFilms(ApiConstants.KEY, "ru-RU", page)
             .enqueue(object : Callback<TmdbResultsDto> {
                 override fun onResponse(
